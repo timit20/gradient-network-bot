@@ -1,29 +1,15 @@
-![Banner](https://raw.githubusercontent.com/mumumusf/mumumusf/main/assets/banner.png)
+# <div align="center">🎮 Game Loading...</div>
 
 <div align="center">
-
-# 🎮 Loading... 
 
 ```diff
 ⚡ 系统初始化...
 ! 检测到角色数据
 + 成功读取存档
 - 上次登录：2024/01/01
-
-! 每日奖励
-+ 签到天数：12
-+ 今日状态：已领取
-+ 额外奖励：周末双倍
-
-! 系统公告
-+ 新版本更新：v2.0.1
-+ 新增功能：NFT系统
-- 系统维护：每周日
 ```
 
-<p>
-  <img src="https://profile-counter.glitch.me/mumumusf/count.svg" alt="👾 访客数" />
-</p>
+<img src="https://profile-counter.glitch.me/mumumusf/count.svg" alt="👾 访客数" />
 
 ### ⭐️ 欢迎来到我的世界！这里是一位热爱技术的开发者
 ### 🎯 主线任务：Web3 与区块链技术开发
@@ -36,156 +22,66 @@
 
 </div>
 
-## 📅 每日任务
+## 📅 角色数据
+<div align="center">
+<img height="150px" src="https://github-readme-stats.vercel.app/api?username=mumumusf&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&theme=tokyonight&locale=cn" />
+<img height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mumumusf&hide_title=true&hide_border=true&layout=compact&theme=tokyonight&locale=cn" />
+</div>
+
+## ⚔️ 技能树
 <div align="center">
 
-```diff
-! 今日任务进度 [4/7]
-+ ✓ 完成一次代码提交
-+ ✓ 解决三个Bug
-+ ✓ 完成单元测试
-+ ✓ 文档更新
-- □ 代码审查
-- □ 部署项目
-- □ 技术分享
-
-! 任务奖励
-+ 基础经验：1,000
-+ 额外奖励：周末双倍
-+ 连续完成：额外20%
-- 剩余时间：8小时
-
-! 特殊事件
-+ 🎉 代码马拉松进行中
-+ 💎 稀有任务已刷新
-+ ⚡ 经验加成时段
-```
+![Python](https://img.shields.io/badge/🐍%20Python-已掌握-3776AB?style=flat-square&logo=Python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/⚡%20JavaScript-已掌握-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/🛡️%20TypeScript-已掌握-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/🔮%20Node.js-已掌握-339933?style=flat-square&logo=node.js&logoColor=white)
+![Docker](https://img.shields.io/badge/🐋%20Docker-已掌握-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Web3.js](https://img.shields.io/badge/🌟%20Web3.js-已掌握-F16822?style=flat-square&logo=web3.js&logoColor=white)
 
 </div>
 
-## 🎲 角色状态
+## 🔥 连续提交
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=mumumusf&theme=tokyonight&hide_border=true&locale=zh" />
+</div>
+
+## 📈 活跃度
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mumumusf&theme=tokyo-night&hide_border=true&area=true" />
+</div>
+
+## 🏆 成就徽章
+<div align="center">
+<img src="https://github-profile-trophy.vercel.app/?username=mumumusf&theme=nord&row=1&column=6&no-frame=true&no-bg=true" />
+</div>
+
+## 🎯 发展方向
 
 <div align="center">
 
-```diff
-👤 角色：开发者
-🎚️ 等级：35
-⚡ 经验：■■■■■■■■■□ 89%
-💖 生命：■■■■■■■■■■ 100%
-⚔️ 攻击：■■■■■■■■□□ 82%
-🛡️ 防御：■■■■■■■□□□ 75%
-🔮 魔力：■■■■■■■■■□ 93%
+### 主线区域
+![Web3](https://img.shields.io/badge/🎯%20主线-Web3%20开发-brightgreen?style=flat-square&logo=web3.js)
+![Blockchain](https://img.shields.io/badge/⛓️%20主城-区块链技术-blue?style=flat-square&logo=blockchain.com)
+![Smart Contract](https://img.shields.io/badge/📜%20任务-智能合约-orange?style=flat-square&logo=ethereum)
 
-! 状态效果
-+ 双倍经验：1小时
-+ 技能冷却：-20%
-+ 代码效率：+30%
-- 疲劳度：25%
-
-! 称号：全栈法师
-+ 攻击加成：+15%
-+ 经验加成：+10%
-+ 掉落加成：+20%
-```
+### 探索区域
+![AI](https://img.shields.io/badge/🤖%20秘境-AI%20集成-purple?style=flat-square&logo=openai)
+![ML](https://img.shields.io/badge/🧠%20副本-ML%20技术-ff69b4?style=flat-square&logo=tensorflow)
 
 </div>
 
-## 🏆 成就大厅
+## 📫 联系方式
 <div align="center">
 
-```diff
-! 最新解锁成就
-+ 🌟 代码艺术家：完成100次提交
-+ 💎 Bug终结者：修复1000个Bug
-+ 🎯 完美主义者：100%测试覆盖
-+ 🚀 部署大师：50次成功部署
-
-! 稀有成就进度
-+ 全栈传说：■■■■■□□□□□ 50%
-+ 区块链先驱：■■■■■■■□□□ 70%
-+ AI探索者：■■■□□□□□□□ 30%
-+ 开源贡献者：■■■■■■□□□□ 60%
-
-! 成就点数：12,345
-+ 可用点数：1,234
-+ 已使用：11,111
-- 下次重置：30天
-```
+[![Twitter](https://img.shields.io/badge/🐦%20Twitter-@YOYOMYOYOA-00acee?style=flat-square&logo=twitter&logoColor=white)](https://x.com/YOYOMYOYOA)
 
 </div>
 
-## 🎁 每周奖励
+## 🎮 活动记录
 <div align="center">
-
-```diff
-! 本周任务完成度：75%
-+ 周常任务：15/20
-+ 精英任务：3/5
-+ 团队任务：2/3
-
-! 奖励预览
-+ 稀有装备抽取
-+ 技能点x100
-+ 经验加成卷轴
-- 需要等级：30+
-
-! 排行榜状态
-+ 服务器排名：125
-+ 区域排名：12
-+ 工会贡献：1,234
-```
-
-</div>
-
-## 🎪 特殊活动
-<div align="center">
-
-```diff
-! 当前活动
-+ 🎉 代码马拉松
-  - 持续时间：3天
-  - 特殊奖励：限定称号
-  - 参与奖励：经验x2
-
-+ 🌟 技术嘉年华
-  - 新手礼包
-  - 每日抽奖
-  - 限时任务
-
-+ ⚔️ 团队副本
-  - 难度：⭐⭐⭐⭐
-  - 推荐等级：35+
-  - 掉落加成：200%
-
-! 活动日历
-+ 周一：经验加倍
-+ 周三：掉落加倍
-+ 周五：精英挑战
-+ 周末：团队副本
-```
-
-</div>
-
-## 🎨 个性化设置
-<div align="center">
-
-```diff
-! 界面主题
-+ 当前主题：赛博朋克
-+ 特效：开启
-+ 动画：流畅
-
-! 自定义显示
-+ 状态栏：显示
-+ 任务追踪：开启
-+ 成就提醒：开启
-- 战斗记录：关闭
-
-! 快捷键设置
-+ 任务面板：Tab
-+ 背包：B
-+ 技能树：K
-+ 地图：M
-```
-
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-snake.svg" />
+</picture>
 </div>
