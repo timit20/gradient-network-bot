@@ -1,3 +1,7 @@
+<div align="center">
+<img width="100%" src="https://raw.githubusercontent.com/mumumusf/mumumusf/main/assets/banner.jpg" alt="banner" />
+</div>
+
 # <div align="center">🎮 Game Loading...</div>
 
 <div align="center">
