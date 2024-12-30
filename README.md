@@ -1,11 +1,8 @@
-<div align="center">
+<div align="center" style="background-color: #0d1117; padding: 20px; border-radius: 10px;">
 <img width="100%" src="https://raw.githubusercontent.com/mumumusf/mumumusf/main/assets/banner.jpg" alt="banner" />
-</div>
-
-<div align="center">
 
 <h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=🎮+Game+Loading...;⚡+System+Initializing...;" />
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=🎮+Game+Loading...;⚡+System+Initializing...;&color=58A6FF&background=0D1117" />
 </h1>
 
 <div align="center">
@@ -13,7 +10,7 @@
 </div>
 
 <h3>
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=25&center=true&vCenter=true&width=500&height=70&duration=4000&lines=⭐️+欢迎来到我的世界！;🎯+这里是一位热爱技术的开发者" />
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=25&center=true&vCenter=true&width=500&height=70&duration=4000&lines=⭐️+欢迎来到我的世界！;🎯+这里是一位热爱技术的开发者&color=58A6FF&background=0D1117" />
 </h3>
 
 <div>
@@ -24,14 +21,16 @@
 
 </div>
 
+<div style="background-color: #0d1117; padding: 20px; border-radius: 10px; margin-top: 20px;">
+
 <h2>
   <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width="25">
   角色数据
 </h2>
 
 <div align="center">
-<img height="150px" src="https://github-readme-stats.vercel.app/api?username=mumumusf&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&theme=tokyonight&locale=cn" />
-<img height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mumumusf&hide_title=true&hide_border=true&layout=compact&theme=tokyonight&locale=cn" />
+<img height="150px" src="https://github-readme-stats.vercel.app/api?username=mumumusf&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&theme=github_dark&bg_color=0D1117&locale=cn" />
+<img height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mumumusf&hide_title=true&hide_border=true&layout=compact&theme=github_dark&bg_color=0D1117&locale=cn" />
 </div>
 
 <h2>
@@ -56,7 +55,7 @@
 </h2>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=mumumusf&theme=tokyonight&hide_border=true&locale=zh" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=mumumusf&theme=github-dark-blue&hide_border=true&locale=zh&background=0D1117" />
 </div>
 
 <h2>
@@ -65,7 +64,7 @@
 </h2>
 
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mumumusf&theme=tokyo-night&hide_border=true&area=true" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mumumusf&theme=github-dark&hide_border=true&area=true&bg_color=0D1117" />
 </div>
 
 <h2>
@@ -74,7 +73,7 @@
 </h2>
 
 <div align="center">
-<img src="https://github-profile-trophy.vercel.app/?username=mumumusf&theme=nord&row=1&column=6&no-frame=true&no-bg=true" />
+<img src="https://github-profile-trophy.vercel.app/?username=mumumusf&theme=darkhub&row=1&column=6&no-frame=true&no-bg=true" />
 </div>
 
 <h2>
@@ -112,11 +111,11 @@
 </h2>
 
 <div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-snake.svg" />
-</picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/dist/github-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/dist/github-snake.svg" />
+    <img alt="github-snake" src="https://raw.githubusercontent.com/mumumusf/mumumusf/output/dist/github-snake.svg" />
+  </picture>
 </div>
 
-<img src="https://raw.githubusercontent.com/trinib/trinib/snake/github-contribution-grid-snake-dark.svg" width="100%"></div>
+</div>
