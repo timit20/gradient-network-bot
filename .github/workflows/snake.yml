@@ -21,12 +21,11 @@ jobs:
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-            dist/github-contribution-grid-snake.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+            dist/github-contribution-grid-snake.gif?color_snake=#fb4934&color_dots=#fbf1c7,#b8bb26,#fabd2f,#fe8019,#fb4934
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push to GitHub
         uses: EndBug/add-and-commit@v9
         with:
-          branch: output
           message: 'Generate Contribution Snake'

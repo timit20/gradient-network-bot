@@ -1,8 +1,8 @@
-<div align="center" style="background-color: #0d1117; padding: 20px; border-radius: 10px;">
+<div align="center">
 <img width="100%" src="https://raw.githubusercontent.com/mumumusf/mumumusf/main/assets/banner.jpg" alt="banner" />
 
 <h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=🎮+Game+Loading...;⚡+System+Initializing...;&color=58A6FF&background=0D1117" />
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Press+Start+2P&size=30&center=true&vCenter=true&width=500&height=70&duration=4000&lines=🎮+Game+Loading...;⚡+System+Initializing...;&color=58A6FF" />
 </h1>
 
 <div align="center">
@@ -10,7 +10,7 @@
 </div>
 
 <h3>
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=25&center=true&vCenter=true&width=500&height=70&duration=4000&lines=⭐️+欢迎来到我的世界！;🎯+这里是一位热爱技术的开发者&color=58A6FF&background=0D1117" />
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Press+Start+2P&size=20&center=true&vCenter=true&width=500&height=70&duration=4000&lines=⭐️+欢迎来到我的世界！;🎯+这里是一位热爱技术的开发者&color=58A6FF" />
 </h3>
 
 <div>
@@ -19,18 +19,14 @@
   <img src="https://img.shields.io/badge/📜%20Smart Contract-学习中-orange?style=for-the-badge&logo=ethereum" />
 </div>
 
-</div>
-
-<div style="background-color: #0d1117; padding: 20px; border-radius: 10px; margin-top: 20px;">
-
 <h2>
   <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width="25">
   角色数据
 </h2>
 
 <div align="center">
-<img height="150px" src="https://github-readme-stats.vercel.app/api?username=mumumusf&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&theme=github_dark&bg_color=0D1117&locale=cn" />
-<img height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mumumusf&hide_title=true&hide_border=true&layout=compact&theme=github_dark&bg_color=0D1117&locale=cn" />
+<img height="150px" src="https://github-readme-stats.vercel.app/api?username=mumumusf&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&theme=gruvbox&locale=cn" />
+<img height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mumumusf&hide_title=true&hide_border=true&layout=compact&theme=gruvbox&locale=cn" />
 </div>
 
 <h2>
@@ -55,7 +51,7 @@
 </h2>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=mumumusf&theme=github-dark-blue&hide_border=true&locale=zh&background=0D1117" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=mumumusf&theme=gruvbox&hide_border=true&locale=zh" />
 </div>
 
 <h2>
@@ -64,7 +60,7 @@
 </h2>
 
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mumumusf&theme=github-dark&hide_border=true&area=true&bg_color=0D1117" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mumumusf&theme=gruvbox&hide_border=true&area=true" />
 </div>
 
 <h2>
@@ -73,7 +69,7 @@
 </h2>
 
 <div align="center">
-<img src="https://github-profile-trophy.vercel.app/?username=mumumusf&theme=darkhub&row=1&column=6&no-frame=true&no-bg=true" />
+<img src="https://github-profile-trophy.vercel.app/?username=mumumusf&theme=gruvbox&row=1&column=6&no-frame=true" />
 </div>
 
 <h2>
@@ -112,10 +108,8 @@
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/dist/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/dist/github-contribution-grid-snake.svg" />
-    <img alt="github-snake" src="https://raw.githubusercontent.com/mumumusf/mumumusf/output/dist/github-contribution-grid-snake.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/main/dist/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/main/dist/github-contribution-grid-snake.svg" />
+    <img alt="github-snake" src="https://raw.githubusercontent.com/mumumusf/mumumusf/main/dist/github-contribution-grid-snake.svg" />
   </picture>
-</div>
-
 </div>
