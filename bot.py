@@ -381,10 +381,25 @@ class Nodepay:
         data = {
             "id": user_id,
             "browser_id": str(uuid.uuid4()),
-            "timestamp": int(time.time() * 1000),  # 修改为毫秒时间戳
+            "timestamp": int(time.time() * 1000),
             "version": "2.2.7"
         }
-        return await self.make_request('POST', url, proxy, headers=headers, json=data)
+        
+        try:
+            proxies = {'http': proxy, 'https': proxy} if proxy else None
+            response = requests.post(
+                url=url,
+                headers=headers,
+                json=data,
+                proxies=proxies,
+                timeout=30,
+                impersonate="chrome110"
+            )
+            response.raise_for_status()
+            return response.json().get('data')
+        except Exception as e:
+            logging.error(f"Request failed: {e}")
+            return None
 
     # ... (其他方法保持不变)
 
