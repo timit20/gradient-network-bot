@@ -1,6 +1,8 @@
 ![Banner](https://raw.githubusercontent.com/mumumusf/mumumusf/main/assets/banner.png)
 
-![Profile](https://avatars.githubusercontent.com/u/mumumusf)
+<div align="center">
+  <img width="200" src="https://avatars.githubusercontent.com/mumumusf" />
+</div>
 
 ## 👋 你好！ 
 
