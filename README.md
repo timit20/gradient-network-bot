@@ -40,4 +40,8 @@
 - 📧 邮箱：[发送邮件](mailto:your.email@example.com)
 
 ### 🎮 放松一下
-<img src="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-contribution-grid-snake.svg" alt="贪吃蛇" /> 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-contribution-grid-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/mumumusf/mumumusf/output/github-contribution-grid-snake.svg" />
+</picture> 
