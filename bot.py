@@ -318,6 +318,65 @@ class Nodepay:
         except Exception as e:
             logging.error(f"Main process error: {e}")
 
+    async def user_session(self, token: str, proxy: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        """获取用户会话信息"""
+        url = "http://api.nodepay.ai/api/auth/session"
+        headers = {
+            **self.headers,
+            "Authorization": f"Bearer {token}",
+            "Content-Length": "2",
+            "Content-Type": "application/json",
+        }
+        return await self.make_request('POST', url, proxy, headers=headers, json={})
+
+    async def user_earning(self, token: str, proxy: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        """获取用户收益信息"""
+        url = "http://api.nodepay.ai/api/earn/info"
+        headers = {
+            **self.headers,
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+        }
+        return await self.make_request('GET', url, proxy, headers=headers)
+
+    async def mission_lists(self, token: str, proxy: Optional[str] = None) -> Optional[List[Dict[str, Any]]]:
+        """获取任务列表"""
+        url = "http://api.nodepay.ai/api/mission"
+        headers = {
+            **self.headers,
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+        }
+        result = await self.make_request('GET', url, proxy, headers=headers)
+        return result.get('data') if result else None
+
+    async def complete_missions(self, token: str, mission_id: str, proxy: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        """完成任务"""
+        url = "http://api.nodepay.ai/api/mission/complete-mission"
+        headers = {
+            **self.headers,
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+        }
+        return await self.make_request('POST', url, proxy, headers=headers, json={'mission_id': mission_id})
+
+    async def send_ping(self, token: str, user_id: str, proxy: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        """发送 ping 请求"""
+        url = "https://nw.nodepay.org/api/network/ping"
+        headers = {
+            **self.headers,
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+            "Origin": "chrome-extension://lgmpfmgeabnnlemejacfljbmonaomfmm",
+        }
+        data = {
+            "id": user_id,
+            "browser_id": str(uuid.uuid4()),
+            "timestamp": int(time.time()),
+            "version": "2.2.7"
+        }
+        return await self.make_request('POST', url, proxy, headers=headers, json=data)
+
     # ... (其他方法保持不变)
 
 if __name__ == "__main__":
