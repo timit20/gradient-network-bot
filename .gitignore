@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+nodepay-env/
+ENV/
+
+# Logs
+*.log
+nodepay.log
+ip_check.log
+game_bot.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific
+tokens.txt
+manual_proxy.txt
+proxy.txt
+data.txt
+
+# OS specific
+.DS_Store
+Thumbs.db 
