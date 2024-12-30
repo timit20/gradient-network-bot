@@ -2,18 +2,13 @@
 <img width="100%" src="https://raw.githubusercontent.com/mumumusf/mumumusf/main/assets/banner.jpg" alt="banner" />
 </div>
 
-# <div align="center">🎮 Game Loading...</div>
-
 <div align="center">
 
-```diff
-⚡ 系统初始化...
-! 检测到角色数据
-+ 成功读取存档
-- 上次登录：2024/01/01
-```
+# 🎮 Game Loading...
 
-<img src="https://profile-counter.glitch.me/mumumusf/count.svg" alt="👾 访客数" />
+<div align="center">
+  <img src="https://profile-counter.glitch.me/mumumusf/count.svg" alt="👾 访客数" />
+</div>
 
 ### ⭐️ 欢迎来到我的世界！这里是一位热爱技术的开发者
 ### 🎯 主线任务：Web3 与区块链技术开发
