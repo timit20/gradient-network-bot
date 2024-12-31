@@ -92,12 +92,7 @@ screen -S gradient-bot
 sudo docker build . -t gradient-bot .
 
 # 运行容器
-sudo docker run -d --name gradient-bot -e APP_USER=你的Gradient邮箱 \
--e APP_PASS=你的Gradient密码 \
--e PROXY=socks5://代理用户名:代理密码@代理地址:端口 \
--e DEBUG=true \
---restart always \
-gradient-bot
+sudo docker run -d --name gradient-bot -e APP_USER=你的Gradient邮箱 -e APP_PASS=你的Gradient密码 -e PROXY=socks5://代理用户名:代理密码@代理地址:端口 -e DEBUG=true --restart always gradient-bot
 ```
 
 4. 查看运行日志：
