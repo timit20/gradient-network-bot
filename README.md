@@ -89,11 +89,10 @@ screen -S gradient-bot
 3. 构建并运行 Docker 容器（替换下面的信息为你自己的）：
 ```bash
 # 构建 Docker 镜像
-docker build -t gradient-bot .
+sudo docker build . -t gradient-bot .
 
 # 运行容器
-docker run -d --name gradient-bot \
--e APP_USER=你的Gradient邮箱 \
+docker run -d --name gradient-bot -e APP_USER=你的Gradient邮箱 \
 -e APP_PASS=你的Gradient密码 \
 -e PROXY=socks5://代理用户名:代理密码@代理地址:端口 \
 -e DEBUG=true \
