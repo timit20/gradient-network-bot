@@ -1,115 +1,181 @@
-<div align="center">
-<img width="100%" src="https://raw.githubusercontent.com/mumumusf/mumumusf/main/assets/banner.jpg" alt="banner" />
+# Gradient Network 挂机脚本小白教程
 
-<h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Press+Start+2P&size=30&center=true&vCenter=true&width=500&height=70&duration=4000&lines=🎮+Game+Loading...;⚡+System+Initializing...;&color=58A6FF" />
-</h1>
+> 👨‍💻 开发者：小林 (@yoyomyoyoa)
 
-<div align="center">
-  <img src="https://profile-counter.glitch.me/mumumusf/count.svg" alt="👾 访客数" />
-</div>
+## 🌟 这是什么？
 
-<h3>
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Press+Start+2P&size=20&center=true&vCenter=true&width=500&height=70&duration=4000&lines=⭐️+欢迎来到我的世界！;🎯+这里是一位热爱技术的开发者&color=58A6FF" />
-</h3>
+这是一个帮助你自动挂机赚取 Gradient Network 积分的工具。它可以帮你：
+- 自动登录账号
+- 保持在线状态
+- 24小时挂机运行
+- 支持多账号管理
 
-<div>
-  <img src="https://img.shields.io/badge/🎮%20Web3-已解锁-brightgreen?style=for-the-badge&logo=web3.js" />
-  <img src="https://img.shields.io/badge/🌐%20Blockchain-进行中-blue?style=for-the-badge&logo=blockchain.com" />
-  <img src="https://img.shields.io/badge/📜%20Smart Contract-学习中-orange?style=for-the-badge&logo=ethereum" />
-</div>
+## 🎯 开始之前你需要准备
 
-<h2>
-  <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width="25">
-  角色数据
-</h2>
+1. **必需品**：
+   - Gradient Network 账号（[点击注册](https://app.gradient.network/signup?code=EK8G9A)）
+   - 一台电脑或服务器（Windows/Mac/Linux 都可以）
+   - 稳定的网络环境
 
-<div align="center">
-<img height="150px" src="https://github-readme-stats.vercel.app/api?username=mumumusf&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&theme=gruvbox&locale=cn" />
-<img height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mumumusf&hide_title=true&hide_border=true&layout=compact&theme=gruvbox&locale=cn" />
-</div>
+2. **可选但推荐**：
+   - 代理IP（让你的账号更安全）
 
-<h2>
-  <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="25">
-  技能树
-</h2>
+## 📝 超简单三步上手
 
-<div align="center">
+### 第一步：安装 Docker
 
-![Python](https://img.shields.io/badge/🐍%20Python-已掌握-3776AB?style=for-the-badge&logo=Python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/⚡%20JavaScript-已掌握-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/🛡️%20TypeScript-已掌握-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Node.js](https://img.shields.io/badge/🔮%20Node.js-已掌握-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Docker](https://img.shields.io/badge/🐋%20Docker-已掌握-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Web3.js](https://img.shields.io/badge/🌟%20Web3.js-已掌握-F16822?style=for-the-badge&logo=web3.js&logoColor=white)
+> Docker 就像一个容器，可以让程序在任何电脑上都能稳定运行
 
-</div>
+1. 访问 [Docker 官网](https://www.docker.com/get-started/)
+2. 下载并安装对应你系统的版本
+3. 安装完成后打开终端/命令提示符
 
-<h2>
-  <img src="https://media.giphy.com/media/W5eoZHPpUx9sapR0eu/giphy.gif" width="25">
-  连续提交
-</h2>
+### 第二步：选择运行方式
 
-<div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=mumumusf&theme=gruvbox&hide_border=true&locale=zh" />
-</div>
+#### 😊 简单版（无代理）
+复制下面的命令，替换邮箱和密码后运行：
+```bash
+docker run -d \
+  -e APP_USER=你的Gradient邮箱 \
+  -e APP_PASS=你的Gradient密码 \
+  overtrue/gradient-bot
+```
 
-<h2>
-  <img src="https://media.giphy.com/media/j2pOGeGYKe2xCCKwfi/giphy.gif" width="25">
-  活跃度
-</h2>
+#### 🚀 进阶版（使用代理）
+1. 新建一个文本文件，命名为 `proxies.txt`
+2. 在文件中添加你的代理地址，格式如下：
+```
+socks5://用户名:密码@代理地址:端口
+```
+3. 运行以下命令：
+```bash
+docker run -d \
+  -e APP_USER=你的Gradient邮箱 \
+  -e APP_PASS=你的Gradient密码 \
+  -v ./proxies.txt:/app/proxies.txt \
+  overtrue/gradient-bot
+```
 
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mumumusf&theme=gruvbox&hide_border=true&area=true" />
-</div>
+### 第三步：检查是否正常运行
 
-<h2>
-  <img src="https://media.giphy.com/media/dxn6fRlTIShoeBr69N/giphy.gif" width="25">
-  成就徽章
-</h2>
+输入以下命令查看运行状态：
+```bash
+docker ps
+```
+如果能看到 `overtrue/gradient-bot` 就说明启动成功了！
 
-<div align="center">
-<img src="https://github-profile-trophy.vercel.app/?username=mumumusf&theme=gruvbox&row=1&column=6&no-frame=true" />
-</div>
+## 🔍 如何查看运行情况？
 
-<h2>
-  <img src="https://media.giphy.com/media/XwBzLXzYq7ljHBXkHk/giphy.gif" width="25">
-  发展方向
-</h2>
+1. 先输入 `docker ps` 找到你的容器ID
+2. 然后输入：
+```bash
+docker exec -it 容器ID pm2 logs
+```
+3. 你就能看到实时运行日志啦！
 
-<div align="center">
+## ❓ 常见问题解答
 
-### 主线区域
-![Web3](https://img.shields.io/badge/🎯%20主线-Web3%20开发-brightgreen?style=for-the-badge&logo=web3.js)
-![Blockchain](https://img.shields.io/badge/⛓️%20主城-区块链技术-blue?style=for-the-badge&logo=blockchain.com)
-![Smart Contract](https://img.shields.io/badge/📜%20任务-智能合约-orange?style=for-the-badge&logo=ethereum)
+### 1. 如何判断是否正常运行？
+- 运行 `docker ps` 能看到容器在线
+- 日志中没有红色报错信息
+- 登录网站后积分有增长
 
-### 探索区域
-![AI](https://img.shields.io/badge/🤖%20秘境-AI%20集成-purple?style=for-the-badge&logo=openai)
-![ML](https://img.shields.io/badge/🧠%20副本-ML%20技术-ff69b4?style=for-the-badge&logo=tensorflow)
+### 2. 代理在哪里买？
+推荐使用 [Proxy-Cheap](https://app.proxy-cheap.com/r/ksvW8Z)：
+- 选择 Static Residential 类型
+- 稳定性好，价格实惠
+- 支持多种支付方式
 
-</div>
+### 3. 遇到问题怎么办？
+- 检查网络是否正常
+- 确认账号密码是否正确
+- 查看运行日志寻找错误信息
+- 加入我们的交流群寻求帮助
 
-<h2>
-  <img src="https://media.giphy.com/media/KcnlGHBpnKnjZIuCMv/giphy.gif" width="25">
-  联系方式
-</h2>
+## 📱 联系方式
 
-<div align="center">
+- 开发者：小林
+- Twitter：[@yoyomyoyoa](https://twitter.com/yoyomyoyoa)
+## ⚠️ 温馨提示
 
-[![Twitter](https://img.shields.io/badge/🐦%20Twitter-@YOYOMYOYOA-00acee?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/YOYOMYOYOA)
+1. 请使用稳定的网络环境
+2. 定期检查运行状态
+3. 建议使用代理IP来提高安全性
+4. 本项目仅供学习交流使用
 
-</div>
+## 🖥️ VPS使用教程
 
-<h2>
-  <img src="https://media.giphy.com/media/0lGd2OXXHe4tFhb7Wh/giphy.gif" width="25">
-  活动记录
-</h2>
+> VPS就是一台远程的电脑，可以24小时运行我们的程序
 
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/main/dist/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mumumusf/mumumusf/main/dist/github-contribution-grid-snake.svg" />
-    <img alt="github-snake" src="https://raw.githubusercontent.com/mumumusf/mumumusf/main/dist/github-contribution-grid-snake.svg" />
-  </picture>
-</div>
+### 第一步：准备VPS
+
+推荐配置：
+- 系统：Ubuntu 20.04/22.04
+- 内存：1GB及以上
+- 硬盘：20GB及以上
+- 推荐服务商：[Vultr](https://www.vultr.com/)、[DigitalOcean](https://www.digitalocean.com/)
+
+### 第二步：连接VPS
+
+1. Windows用户：
+   - 下载并安装 [PuTTY](https://www.putty.org/)
+   - 输入你的VPS IP地址
+   - 输入用户名（通常是root）和密码
+
+2. Mac/Linux用户：
+   - 打开终端
+   - 输入：`ssh root@你的VPS_IP`
+   - 输入密码
+
+### 第三步：安装Docker
+
+复制以下命令到终端运行：
+```bash
+# 更新系统
+apt update && apt upgrade -y
+
+# 安装必要工具
+apt install -y curl wget
+
+# 安装Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+# 验证Docker安装
+docker --version
+```
+
+### 第四步：运行脚本
+
+然后按照上面的【运行方式】选择对应的命令运行即可。
+
+#### 💡 VPS使用小贴士：
+
+1. **保持程序运行**
+   - 使用 `screen` 或 `tmux` 来保持程序在后台运行
+   - 即使你断开SSH连接，程序也会继续运行
+
+2. **基本命令参考**：
+```bash
+# 创建新的screen会话
+screen -S gradient
+
+# 查看所有容器状态
+docker ps -a
+
+# 查看容器日志
+docker logs 容器ID
+
+# 停止容器
+docker stop 容器ID
+
+# 删除容器
+docker rm 容器ID
+```
+
+3. **安全建议**：
+   - 修改默认SSH端口
+   - 设置强密码
+   - 建议使用SSH密钥登录
+   - 开启防火墙
+
