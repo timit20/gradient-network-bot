@@ -1,42 +1,65 @@
-FROM node:20
+FROM node:18-slim
 
-ENV NODE_ENV=production
-ENV APP_USER=
-ENV APP_PASS=
-ENV SE_TTL=360000
-ENV SE_DEBUG=true
-ENV SE_TRACE=true
-ENV SE_OFFLINE=true
-ENV SE_BROWSER_VERSION=130.0.6723.116
-ENV SE_DRIVER_VERSION=130.0.6723.116
-ENV SE_AVOID_BROWSER_DOWNLOAD=true
-ENV SE_CACHE_PATH=/app/.selenium
-ENV PATH=$PATH:$SE_CACHE_PATH/chromedriver/linux64/$SE_DRIVER_VERSION/chromedriver:$SE_CACHE_PATH/chrome/linux64/$SE_BROWSER_VERSION/chrome
+# 安装 Chrome 依赖
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    ca-certificates \
+    procps \
+    fonts-liberation \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
+    libatspi2.0-0 \
+    libcups2 \
+    libdbus-1-3 \
+    libdrm2 \
+    libgbm1 \
+    libgtk-3-0 \
+    libnspr4 \
+    libnss3 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxkbcommon0 \
+    libxrandr2 \
+    xdg-utils \
+    libu2f-udev \
+    libvulkan1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装 Chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
+    && apt-get update \
+    && apt-get install -y google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
+
+# 验证 Chrome 安装
+RUN google-chrome --version
+
+# 安装 PM2
+RUN npm install pm2 -g
 
 WORKDIR /app
 
-RUN apt-get update -qq -y && \
-    apt-get install -y \
-        vim \
-        libasound2 \
-        libatk-bridge2.0-0 \
-        libgtk-4-1 \
-        libnss3 \
-        xdg-utils \
-        wget
+# 复制项目文件
+COPY package*.json ./
+RUN npm install
 
-ADD . /app/
+COPY . .
 
-# install dependencies
-RUN npm install --omit=dev
-RUN npm install pm2 -g
-RUN pm2 install pm2-logrotate
-RUN pm2 set pm2-logrotate:compress true
-RUN pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
-RUN pm2 set pm2-logrotate:rotateInterval '*/5 * * * *'
-RUN pm2 set pm2-logrotate:max_size 10M
-RUN pm2 set pm2-logrotate:retain 2
-RUN SE_AVOID_BROWSER_DOWNLOAD=false SE_OFFLINE=false ./node_modules/selenium-webdriver/bin/linux/selenium-manager --browser chrome --output SHELL --browser-version $SE_BROWSER_VERSION
-RUN chmod +x /app/entrypoint.sh
+# 设置环境变量
+ENV CHROME_PATH=/usr/bin/google-chrome
+ENV CHROME_BIN=/usr/bin/google-chrome
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV DISPLAY=:99
 
-CMD ["/bin/bash", "/app/entrypoint.sh"]
+# 创建扩展目录
+RUN mkdir -p /root/.config/google-chrome/Default/Extensions
+
+# 启动脚本
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
