@@ -92,7 +92,7 @@ screen -S gradient-bot
 sudo docker build . -t gradient-bot .
 
 # 运行容器
-docker run -d --name gradient-bot -e APP_USER=你的Gradient邮箱 \
+sudo docker run -d --name gradient-bot -e APP_USER=你的Gradient邮箱 \
 -e APP_PASS=你的Gradient密码 \
 -e PROXY=socks5://代理用户名:代理密码@代理地址:端口 \
 -e DEBUG=true \
@@ -102,7 +102,7 @@ gradient-bot
 
 4. 查看运行日志：
 ```bash
-docker logs -f gradient-bot
+sudo docker logs -f gradient-bot
 ```
 
 5. 按 `Ctrl + A` 然后按 `D` 来保持程序在后台运行
@@ -122,7 +122,7 @@ docker ps
 
 3. 查看最新日志：
 ```bash
-docker logs -f gradient-bot
+sudo docker logs -f gradient-bot
 ```
 
 ## ❓ 常见问题解答
