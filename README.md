@@ -51,17 +51,17 @@
 复制以下命令，在服务器终端中运行：
 ```bash
 # 更新系统
-apt update && apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 
 # 安装必要工具
-apt install -y curl wget git screen
+sudo apt install -y curl wget git screen
 
 # 安装 Chrome 依赖
-apt install -y fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 libcairo2 libcups2 libdbus-1-3 libdrm2 libexpat1 libgbm1 libglib2.0-0 libnspr4 libnss3 libpango-1.0-0 libx11-6 libxcb1 libxcomposite1 libxdamage1 libxext6 libxfixes3 libxkbcommon0 libxrandr2 xdg-utils
+sudo apt install -y fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 libcairo2 libcups2 libdbus-1-3 libdrm2 libexpat1 libgbm1 libglib2.0-0 libnspr4 libnss3 libpango-1.0-0 libx11-6 libxcb1 libxcomposite1 libxdamage1 libxext6 libxfixes3 libxkbcommon0 libxrandr2 xdg-utils
 
 # 下载并安装 Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install -y ./google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
 # 安装 Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
