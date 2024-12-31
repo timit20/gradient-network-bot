@@ -81,7 +81,7 @@ docker exec -it 容器ID pm2 logs
 - 登录网站后积分有增长
 
 ### 2. 代理在哪里买？
-推荐使用 [Proxy-Cheap](https://app.proxy-cheap.com/r/ksvW8Z)：
+推荐使用 [Proxy-Cheap]([https://app.proxy-cheap.com/r/puD3oz)：
 - 选择 Static Residential 类型
 - 稳定性好，价格实惠
 - 支持多种支付方式
