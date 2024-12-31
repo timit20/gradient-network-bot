@@ -128,36 +128,24 @@ docker logs -f gradient-bot
 
 ## ❓ 常见问题解答
 
-### 1. 如何判断程序正常运行？
-- 日志中显示 "程序已启动！"
-- 没有红色的错误信息
-- 每30秒会显示一次状态检查信息
+### 1. 如何判断是否正常运行？
+- 运行 `docker ps` 能看到容器在线
+- 日志中没有红色报错信息
+- 登录网站后积分有增长
 
-### 2. 如何重启程序？
-```bash
-docker restart gradient-bot
-```
+### 2. 代理在哪里买？
+推荐使用 [Proxy-Cheap](https://app.proxy-cheap.com/r/ksvW8Z)：
+- 选择 Static Residential 类型
+- 稳定性好，价格实惠
+- 支持多种支付方式
 
-### 3. 如何停止程序？
-```bash
-docker stop gradient-bot
-```
+### 3. 遇到问题怎么办？
+- 检查网络是否正常
+- 确认账号密码是否正确
+- 查看运行日志寻找错误信息
+- 加入我们的交流群寻求帮助
 
-### 4. 代理不能用怎么办？
-- 确认代理格式是否正确
-- 检查代理是否过期
-- 尝试更换新的代理
-
-### 5. Chrome 相关错误怎么解决？
-- 确保 Chrome 安装成功：`google-chrome --version`
-- 如果提示版本不匹配，可以尝试重新安装 Chrome：
-  ```bash
-  apt remove -y google-chrome-stable
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  apt install -y ./google-chrome-stable_current_amd64.deb
-  ```
-
-## 📱 需要帮助？
+## 📱 联系方式
 
 - 开发者：小林
 - Twitter：[@yoyomyoyoa](https://twitter.com/yoyomyoyoa)
