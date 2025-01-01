@@ -149,4 +149,9 @@ sudo docker logs -f gradient-bot
 1. 请使用可靠的代理服务
 2. 定期检查程序运行状态
 3. 保持服务器稳定在线
-4. 本项目仅供学习交流使用
+4. 本项目仅供学习使用
+5. 停止并删除旧容器
+   docker stop gradient-bot1
+   docker rm gradient-bot1
+
+
