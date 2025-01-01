@@ -417,6 +417,121 @@ async function findElement(driver, selector) {
   throw new Error(`无法找到元素: ${selector}`)
 }
 
+// 添加状态检查函数
+async function checkSupportStatus(driver) {
+  try {
+    let retryCount = 0;
+    const maxRetries = 10;
+
+    async function checkStatus() {
+      // 切换到扩展页面
+      await driver.get(`chrome-extension://${extensionId}/popup.html`);
+      
+      // 等待页面完全加载
+      await driver.wait(async () => {
+        const readyState = await driver.executeScript('return document.readyState');
+        return readyState === 'complete';
+      }, 10000);
+
+      // 等待Status元素出现
+      await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Status")]')), 10000);
+      
+      // 等待状态元素出现
+      await driver.wait(until.elementLocated(By.css(".absolute.mt-3.right-0.z-10")), 10000);
+      
+      // 获取状态文本
+      const statusElement = await driver.findElement(By.css(".absolute.mt-3.right-0.z-10"));
+      const status = await statusElement.getText();
+      
+      // 直接输出当前状态
+      console.log(`-> [${new Date().toISOString()}] 当前状态:`, status);
+      
+      return status;
+    }
+
+    let currentStatus = await checkStatus();
+
+    // 如果状态是Disconnected，进行重试
+    while (currentStatus.includes('Disconnected') && retryCount < maxRetries) {
+      console.log(`-> 检测到断开连接，正在进行第 ${retryCount + 1}/${maxRetries} 次重试...`);
+      
+      // 重新加载扩展
+      await driver.get(`chrome-extension://${extensionId}/popup.html`);
+      await driver.navigate().refresh();
+      
+      // 等待页面完全加载
+      await driver.wait(async () => {
+        const readyState = await driver.executeScript('return document.readyState');
+        return readyState === 'complete';
+      }, 10000);
+
+      // 等待Status元素出现
+      await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Status")]')), 10000);
+      
+      // 等待5秒让扩展完全初始化
+      await driver.sleep(5000);
+      
+      // 尝试点击Connect按钮
+      try {
+        const connectButton = await driver.findElement(By.xpath('//button[contains(text(), "Connect")]'));
+        if (connectButton) {
+          await connectButton.click();
+          console.log('-> 已点击重新连接按钮');
+          // 点击后等待10秒让连接建立
+          await driver.sleep(10000);
+        }
+      } catch (e) {
+        console.log('-> 未找到重连按钮');
+      }
+      
+      currentStatus = await checkStatus();
+      
+      if (currentStatus.includes('Good')) {
+        console.log('-> 重连成功！');
+        break;
+      }
+      
+      retryCount++;
+    }
+
+    // 如果重试10次后仍然失败，检查代理
+    if (retryCount >= maxRetries && !currentStatus.includes('Good')) {
+      console.log('-> 重试10次后仍然未连接成功，正在检查代理...');
+      
+      if (PROXY) {
+        try {
+          await testProxy(PROXY);
+          console.log('-> 代理连接正常');
+        } catch (error) {
+          console.error('-> 代理连接异常:', error.message);
+          console.log(`-> 建议检查以下内容：
+          1. 确认代理服务器 ${PROXY} 是否正常
+          2. 尝试使用 curl -vv -x ${PROXY} https://myip.ipip.net 测试代理
+          3. 考虑更换代理服务器
+          `);
+        }
+      } else {
+        console.log('-> 未使用代理，建议配置代理以提高连接成功率');
+      }
+    }
+
+    return currentStatus.includes('Good');
+  } catch (error) {
+    console.error('-> 状态检查出错:', error.message);
+    return false;
+  }
+}
+
+// 添加定时检查函数
+async function startStatusCheck(driver) {
+  console.log('-> 开始定时状态检查 (每20秒)...');
+  
+  // 设置定时器
+  setInterval(async () => {
+    await checkSupportStatus(driver);
+  }, 20000); // 20秒检查一次
+}
+
 // 主程序
 (async function main() {
   let driver;
@@ -741,6 +856,9 @@ async function findElement(driver, selector) {
     })
 
     console.log("-> 程序已启动！")
+
+    // 启动状态检查
+    await startStatusCheck(driver);
 
     // 定期检查状态
     setInterval(async () => {
