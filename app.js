@@ -420,116 +420,97 @@ async function findElement(driver, selector) {
 // 添加状态检查函数
 async function checkSupportStatus(driver) {
   try {
-    let retryCount = 0;
-    const maxRetries = 10;
+    // 等待 Status 元素出现
+    await driver.wait(
+      until.elementLocated(By.xpath('//div[contains(text(), "Status")]')),
+      30000
+    );
 
-    async function checkStatus() {
-      // 切换到扩展页面
-      await driver.get(`chrome-extension://${extensionId}/popup.html`);
-      
-      // 等待页面完全加载
-      await driver.wait(async () => {
-        const readyState = await driver.executeScript('return document.readyState');
-        return readyState === 'complete';
-      }, 10000);
+    // 检查连接状态
+    const supportStatus = await driver
+      .findElement(By.css(".absolute.mt-3.right-0.z-10"))
+      .getText();
 
-      // 等待Status元素出现
-      await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Status")]')), 10000);
-      
-      // 等待状态元素出现
-      await driver.wait(until.elementLocated(By.css(".absolute.mt-3.right-0.z-10")), 10000);
-      
-      // 获取状态文本
-      const statusElement = await driver.findElement(By.css(".absolute.mt-3.right-0.z-10"));
-      const status = await statusElement.getText();
-      
-      // 直接输出当前状态
-      console.log(`-> [${new Date().toISOString()}] 当前状态:`, status);
-      
-      return status;
-    }
-
-    let currentStatus = await checkStatus();
-
-    // 如果状态是Disconnected，进行重试
-    while (currentStatus.includes('Disconnected') && retryCount < maxRetries) {
-      console.log(`-> 检测到断开连接，正在进行第 ${retryCount + 1}/${maxRetries} 次重试...`);
-      
-      // 重新加载扩展
-      await driver.get(`chrome-extension://${extensionId}/popup.html`);
-      await driver.navigate().refresh();
-      
-      // 等待页面完全加载
-      await driver.wait(async () => {
-        const readyState = await driver.executeScript('return document.readyState');
-        return readyState === 'complete';
-      }, 10000);
-
-      // 等待Status元素出现
-      await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Status")]')), 10000);
-      
-      // 等待5秒让扩展完全初始化
-      await driver.sleep(5000);
-      
-      // 尝试点击Connect按钮
-      try {
-        const connectButton = await driver.findElement(By.xpath('//button[contains(text(), "Connect")]'));
-        if (connectButton) {
-          await connectButton.click();
-          console.log('-> 已点击重新连接按钮');
-          // 点击后等待10秒让连接建立
-          await driver.sleep(10000);
-        }
-      } catch (e) {
-        console.log('-> 未找到重连按钮');
-      }
-      
-      currentStatus = await checkStatus();
-      
-      if (currentStatus.includes('Good')) {
-        console.log('-> 重连成功！');
-        break;
-      }
-      
-      retryCount++;
-    }
-
-    // 如果重试10次后仍然失败，检查代理
-    if (retryCount >= maxRetries && !currentStatus.includes('Good')) {
-      console.log('-> 重试10次后仍然未连接成功，正在检查代理...');
-      
-      if (PROXY) {
-        try {
-          await testProxy(PROXY);
-          console.log('-> 代理连接正常');
-        } catch (error) {
-          console.error('-> 代理连接异常:', error.message);
-          console.log(`-> 建议检查以下内容：
-          1. 确认代理服务器 ${PROXY} 是否正常
-          2. 尝试使用 curl -vv -x ${PROXY} https://myip.ipip.net 测试代理
-          3. 考虑更换代理服务器
-          `);
-        }
-      } else {
-        console.log('-> 未使用代理，建议配置代理以提高连接成功率');
-      }
-    }
-
-    return currentStatus.includes('Good');
+    console.log("-> 状态:", supportStatus);
+    return supportStatus;
   } catch (error) {
     console.error('-> 状态检查出错:', error.message);
+    return null;
+  }
+}
+
+async function reloadExtension(driver) {
+  try {
+    // 重新加载扩展
+    await driver.get(`chrome-extension://${extensionId}/popup.html`);
+    await driver.navigate().refresh();
+    
+    // 等待页面加载完成
+    await driver.wait(async () => {
+      const readyState = await driver.executeScript('return document.readyState');
+      return readyState === 'complete';
+    }, 10000);
+
+    // 等待扩展初始化
+    await driver.sleep(5000);
+    
+    return true;
+  } catch (error) {
+    console.error('-> 扩展重载失败:', error.message);
     return false;
   }
 }
 
-// 添加定时检查函数
 async function startStatusCheck(driver) {
-  console.log('-> 开始定时状态检查 (每20秒)...');
+  console.log('-> 开始定时状态检查 (每5分钟)...');
   
-  // 设置定时器
   setInterval(async () => {
-    await checkSupportStatus(driver);
-  }, 20000); // 20秒检查一次
+    try {
+      let retryCount = 0;
+      let status = null;
+      
+      while (retryCount < 10) {
+        // 重新加载扩展
+        console.log(`-> 第 ${retryCount + 1} 次尝试加载扩展...`);
+        const reloadSuccess = await reloadExtension(driver);
+        
+        if (!reloadSuccess) {
+          console.log('-> 扩展加载失败，重试...');
+          retryCount++;
+          continue;
+        }
+
+        // 检查状态
+        status = await checkSupportStatus(driver);
+        
+        if (status === null) {
+          console.log('-> 状态检查失败，重试...');
+          retryCount++;
+          continue;
+        }
+        
+        if (status.includes('Good')) {
+          console.log('-> 状态正常 (Good)');
+          break;
+        } else if (status.includes('Disconnected')) {
+          console.log('-> 状态异常 (Disconnected)，重试...');
+          retryCount++;
+          await driver.sleep(5000);  // 等待5秒后重试
+          continue;
+        }
+      }
+      
+      // 如果10次重试后仍未成功，重启程序
+      if (retryCount >= 10) {
+        console.log('-> 达到最大重试次数，准备重启程序...');
+        await driver.quit();
+        process.exit(1);  // 退出程序，PM2 会自动重启
+      }
+      
+    } catch (error) {
+      console.error('-> 状态检查出错:', error.message);
+    }
+  }, 300000); // 每5分钟运行一次
 }
 
 // 主程序
@@ -863,44 +844,43 @@ async function startStatusCheck(driver) {
     // 定期检查状态
     setInterval(async () => {
       try {
-        const title = await driver.getTitle()
-        const status = await driver
-          .findElement(By.css(".absolute.mt-3.right-0.z-10"))
-          .getText()
-
-        if (status.includes("Disconnected")) {
-          console.log("-> 检测到断开连接，程序退出")
-          await driver.quit()
-          process.exit(1)
-        }
-
-        console.log(`-> [${USER}] 正在运行...`, title)
+        const title = await driver.getTitle();
+        console.log(`-> [${USER}] 正在运行...`, title);
         if (PROXY) {
-          console.log(`-> [${USER}] 使用代理 ${PROXY} 运行中...`)
+          console.log(`-> [${USER}] 使用代理 ${PROXY} 运行中...`);
         }
       } catch (error) {
-        console.error("-> 状态检查失败，程序退出:", error.message)
-        await driver.quit()
-        process.exit(1)
+        console.error("-> 状态检查遇到错误:", error.message);
+        console.log("-> 将在下次检查时重试...");
       }
-    }, 30000)
+    }, 60000); // 1分钟检查一次
 
   } catch (error) {
-    console.error("-> 发生错误:", error.message)
+    console.error("-> 发生错误:", error.message);
     if (ALLOW_DEBUG) {
-      console.log("-> 正在保存错误截图...")
+      console.log("-> 正在保存错误截图...");
       try {
         if (driver) {
-          const screenshot = await driver.takeScreenshot()
-          const filename = `error_${Date.now()}.png`
-          fs.writeFileSync(filename, screenshot, 'base64')
-          console.log(`-> 错误截图已保存: ${filename}`)
-          await driver.quit()
+          const screenshot = await driver.takeScreenshot();
+          const filename = `error_${Date.now()}.png`;
+          fs.writeFileSync(filename, screenshot, 'base64');
+          console.log(`-> 错误截图已保存: ${filename}`);
         }
       } catch (screenshotError) {
-        console.error("-> 无法保存错误截图:", screenshotError.message)
+        console.error("-> 无法保存错误截图:", screenshotError.message);
       }
     }
-    process.exit(1)
+    // 不要立即退出，而是重启浏览器
+    console.log("-> 尝试重启浏览器...");
+    try {
+      if (driver) {
+        await driver.quit();
+      }
+      // 递归调用main函数重新开始
+      return main();
+    } catch (restartError) {
+      console.error("-> 重启失败:", restartError.message);
+      process.exit(1);
+    }
   }
 })();
