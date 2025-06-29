@@ -26,16 +26,18 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     libu2f-udev \
     libvulkan1 \
-    && rm -rf /var/lib/apt/lists/*
+    unzip \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# 安装 Chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
+# 安装 Chrome 131.0.6778.69
+RUN wget -q -O /tmp/google-chrome-stable_131.0.6778.69-1_amd64.deb \
+    https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_131.0.6778.69-1_amd64.deb \
     && apt-get update \
-    && apt-get install -y google-chrome-stable \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y /tmp/google-chrome-stable_131.0.6778.69-1_amd64.deb \
+    && rm /tmp/google-chrome-stable_131.0.6778.69-1_amd64.deb \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# 验证 Chrome 安装
+# 验证 Chrome 版本
 RUN google-chrome --version
 
 # 安装 PM2
@@ -46,7 +48,6 @@ WORKDIR /app
 # 复制项目文件
 COPY package*.json ./
 RUN npm install
-
 COPY . .
 
 # 设置环境变量
