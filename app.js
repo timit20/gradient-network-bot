@@ -56,23 +56,27 @@ if (ALLOW_DEBUG) {
 
 async function downloadExtension(extensionId) {
   const url = CRX_URL.replace("${extensionId}", extensionId);
-  const headers = { 
+  const headers = {
     "User-Agent": USER_AGENT,
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.5",
     "Accept-Encoding": "gzip, deflate, br",
     "Connection": "keep-alive",
-    "Upgrade-Insecure-Requests": "1"
+    "Upgrade-Insecure-Requests": "1",
   };
 
-  console.log("-> 正在下载扩展，地址:", url);
-
-  // 强制重新下载扩展
+  console.log("-> 检查扩展文件是否存在...");
   if (fs.existsSync(EXTENSION_FILENAME)) {
-    console.log("-> 删除旧的扩展文件...");
-    fs.unlinkSync(EXTENSION_FILENAME);
+    console.log("-> 扩展文件已存在，跳过下载:", EXTENSION_FILENAME);
+    if (ALLOW_DEBUG) {
+      const fileContent = fs.readFileSync(EXTENSION_FILENAME);
+      const md5 = crypto.createHash("md5").update(fileContent).digest("hex");
+      console.log("-> 现有扩展 MD5:", md5);
+    }
+    return; // 文件存在，跳过下载
   }
 
+  console.log("-> 扩展文件不存在，下载扩展，地址:", url);
   return new Promise((resolve, reject) => {
     request({ url, headers, encoding: null }, (error, response, body) => {
       if (error) {
@@ -86,13 +90,54 @@ async function downloadExtension(extensionId) {
       fs.writeFileSync(EXTENSION_FILENAME, body);
       if (ALLOW_DEBUG) {
         const md5 = crypto.createHash("md5").update(body).digest("hex");
-        console.log("-> 扩展 MD5:", md5);
+        console.log("-> 新扩展 MD5:", md5);
       }
       console.log("-> 扩展下载成功！");
       resolve();
     });
   });
 }
+
+
+// async function downloadExtension(extensionId) {
+//   const url = CRX_URL.replace("${extensionId}", extensionId);
+//   const headers = { 
+//     "User-Agent": USER_AGENT,
+//     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+//     "Accept-Language": "en-US,en;q=0.5",
+//     "Accept-Encoding": "gzip, deflate, br",
+//     "Connection": "keep-alive",
+//     "Upgrade-Insecure-Requests": "1"
+//   };
+
+//   console.log("-> 正在下载扩展，地址:", url);
+
+//   // 强制重新下载扩展
+//   if (fs.existsSync(EXTENSION_FILENAME)) {
+//     console.log("-> 删除旧的扩展文件...");
+//     fs.unlinkSync(EXTENSION_FILENAME);
+//   }
+
+//   return new Promise((resolve, reject) => {
+//     request({ url, headers, encoding: null }, (error, response, body) => {
+//       if (error) {
+//         console.error("-> 下载扩展时出错:", error);
+//         return reject(error);
+//       }
+//       if (response.statusCode !== 200) {
+//         console.error("-> 下载扩展失败！状态码:", response.statusCode);
+//         return reject(new Error(`下载扩展失败！状态码: ${response.statusCode}`));
+//       }
+//       fs.writeFileSync(EXTENSION_FILENAME, body);
+//       if (ALLOW_DEBUG) {
+//         const md5 = crypto.createHash("md5").update(body).digest("hex");
+//         console.log("-> 扩展 MD5:", md5);
+//       }
+//       console.log("-> 扩展下载成功！");
+//       resolve();
+//     });
+//   });
+// }
 
 async function takeScreenshot(driver, filename) {
   if (!ALLOW_DEBUG) {
